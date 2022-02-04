@@ -1,18 +1,16 @@
-N = int(input())
-lst = []
+import sys
 
-for i in range(N):
-    lst.insert(0, int(input()))
+n = int(sys.stdin.readline())
+point = [int(sys.stdin.readline()) for _ in range(n)]
+point.reverse()
+target = point[0]
+res = []
+for i in range(1, n):
+    if target <= point[i]:
+        cnt = - (target - point[i] - 1)
+        point[i] -= cnt
+        res.append(cnt)
 
-cnt = 0
-max_val = lst[0]+1
+    target = point[i]
 
-for n in lst:
-    while n >= max_val:
-        n -= 1
-        cnt += 1
-
-
-    max_val = n
-
-print(cnt)
+print(sum(res))
