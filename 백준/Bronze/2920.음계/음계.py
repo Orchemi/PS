@@ -1,8 +1,16 @@
-put = input()
+put = list(map(int, input().split()))
 
-if put == '1 2 3 4 5 6 7 8':
+a = put[0] - put[1]
+n = 2
+
+while n < 8:
+    if put[n-1]-put[n] != a:
+        print('mixed')
+        quit()
+
+    n += 1
+
+if a == -1:
     print('ascending')
-elif put == '8 7 6 5 4 3 2 1':
+elif a == 1:
     print('descending')
-else:
-    print('mixed')
