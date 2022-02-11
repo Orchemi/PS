@@ -7,23 +7,17 @@ for _ in range(N):
     k = lst_c if d else lst_r
     k.append(i)
 
-lst_c.append(W)
-lst_c.sort()
-lst_r.append(H)
-lst_r.sort()
+def Func(arr, N):
+    arr.append(N)
+    arr.sort()
 
-max_c = 0
-i = 0
-while lst_c[i] != W:
-    if max_c < lst_c[i+1]-lst_c[i]:
-        max_c = lst_c[i+1] - lst_c[i]
-    i += 1
+    ret = 0
+    i = 0
 
-max_r = 0
-i = 0
-while lst_r[i] != H:
-    if max_r < lst_r[i+1]-lst_r[i]:
-        max_r = lst_r[i+1] - lst_r[i]
-    i += 1
+    while arr[i] != N:
+        if ret < arr[i+1] - arr[i]:
+            ret = arr[i+1] - arr[i]
+        i += 1
+    return ret
 
-print(max_r*max_c)
+print(Func(lst_c,W) * Func(lst_r,H))
