@@ -1,15 +1,13 @@
-while True:
-    N = input()
-    if N == '0':
-        break
-
-    while len(N) > 1:
-        if N[0] == N[-1]:
-            flag = 1
-            N = N[1:-1]
-        else:
-            print('no')
-            break
-
-    if len(N) <= 1:
+def func(n):
+    if len(n) < 2:
         print('yes')
+    elif n[0] == n[-1]:
+        return func(n[1:-1])
+    else:
+        print('no')
+
+while True:
+    n = input()
+    if n == '0':
+        break
+    func(n)
