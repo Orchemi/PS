@@ -1,14 +1,16 @@
-n,k = map(int,input().split())
-nation = [list(map(int,input().split())) for _ in range(n)]
-nation.sort(key = lambda x : (-x[1],-x[2],-x[3]))
+N, K = map(int, input().split())
+dict1 = {}
 
-record = (nation[0][1],nation[0][2],nation[0][3])
-rank,cnt = 1,0
-for num,a,b,c in nation:
-    cnt+=1
-    if (a,b,c) != record:
-        rank = cnt
-        record = (a,b,c)
-    if num == k:
-        print(rank)
-        break
+for n in range(N):
+    a = list(map(int, input().split()))
+    a_score = a[1]*(10**12) + a[2]*(10**6) + a[3]
+    dict1[a[0]] = a_score
+
+c = dict1.get(K)
+
+cnt = 1
+for val in dict1.values():
+    if val < c:
+        cnt += 1
+
+print(cnt)
