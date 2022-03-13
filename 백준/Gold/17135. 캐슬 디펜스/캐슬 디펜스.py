@@ -84,10 +84,10 @@ def selectEnemy(archor, D):
         didj = [(0,-1), (-1,0), (0,1)]
         for di, dj in didj:
             if 0<=ni+di and 0<=nj+dj<W:
-                if matdec[ni+di][nj+dj]==1 and dis<=D:
+                if matdec[ni+di][nj+dj]==1:
                     return ni+di, nj+dj
 
-                if not visited[ni+di][nj+dj] and dis<D:
+                if not visited[ni+di][nj+dj]:
                     visited[ni+di][nj+dj] = 1
                     areaQ.append((ni+di, nj+dj, dis+1))
                     end += 1
