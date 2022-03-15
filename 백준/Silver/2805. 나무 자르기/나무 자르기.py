@@ -1,9 +1,7 @@
 import sys
-from math import ceil
 input = sys.stdin.readline
 
 N, L = map(int, input().split())
-AA = 1000000000
 trees = list(map(int, input().split()))
 TD = {}
 for t in trees:
@@ -22,4 +20,5 @@ for i in range(-1, -TLL, -1):
     else:
         break
 
-print(TL[i] - ceil(L/TD[TL[i]]))
+K = (L//TD[TL[i]])+1 if L%TD[TL[i]] else (L//TD[TL[i]])
+print(TL[i] - K)
