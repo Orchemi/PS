@@ -6,7 +6,7 @@ arr = list(map(int, input().split()))
 dictA = {}
 
 for a in arr:
-    dictA[a] = dictA.get(a, 0) + 1
+    dictA[a] = 1
 
 sumV = 0
 dictB = {}
