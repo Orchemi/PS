@@ -5,11 +5,8 @@ input = sys.stdin.readline
 def Rotate():
     global status, CV
     CV.appendleft(CV.pop())
-    k = N-1
-    while k > 0:
-        status[k] = status[k-1]
-        k -= 1
-    status[0] = status[N-1] = 0
+    status.appendleft(status.pop())
+    status[N-1] = 0
 
 def Move(i):
     global status, CV
