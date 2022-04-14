@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def make(a, b, c):
     if memo[a][b][c]!=-1: pass
     elif a>70 or b>70 or c>70:
