@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
 X = 10 if N<6 else N
 arr = [0]*(X+1)
