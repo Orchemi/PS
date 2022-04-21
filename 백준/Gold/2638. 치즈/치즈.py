@@ -2,12 +2,6 @@ import sys
 input = sys.stdin.readline
 from collections import deque
 
-def SM(mat):
-    for l in mat:
-        print(*l)
-    print()
-
-
 def bfs(ni, nj):
     global removeQ, space
     Q = deque()
