@@ -33,6 +33,9 @@ minSsum = 0
 for i in range(1, N+1):
     if not v[i]:
         minSsum += bfs(i)
+        
+        if minSsum > k:
+            break
 
 ans = minSsum if minSsum <= k else 'Oh no'
 print(ans)
