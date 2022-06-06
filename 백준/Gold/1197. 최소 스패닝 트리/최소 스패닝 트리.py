@@ -1,6 +1,5 @@
 import sys
 input = sys.stdin.readline
-from heapq import heappop, heappush
 
 
 def find_set(x):
@@ -23,13 +22,16 @@ V, E = map(int, input().split())
 Q = []
 for _ in range(E):
     u, v, w = map(int, input().split())
-    heappush(Q, (w, u, v))
+    Q.append((w, u, v))
+Q.sort()
 
 p = [i for i in range(V+1)]
 ret = 0
 cnt = 0
+i = 0
 while cnt < V-1:
-    w, u, v = heappop(Q)
+    w, u, v = Q[i]
     union(u, v, w)
+    i += 1
 
 print(ret)
