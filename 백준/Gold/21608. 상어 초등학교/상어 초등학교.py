@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def fill_order(n):
     global mat, N
     def check_like(n, i, j):
