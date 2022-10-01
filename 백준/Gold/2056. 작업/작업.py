@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def calc_time(n):
     global time, dp, first
     if dp[n]: return dp[n]
