@@ -1,6 +1,14 @@
-import sys
 from itertools import combinations
 from collections import deque
+
+def check_around(i, j):
+    global I, J, origin_mat
+    for di in range(-1, 2):
+        for dj in range(-1, 2):
+            si, sj = i+di, j+dj
+            if not (0<=si<I and 0<=sj<J): continue
+            if origin_mat[si][sj]==2: return 1
+    return 0
 
 def main(mat, tu1, tu2):
     global I, J, origin_mat
@@ -51,7 +59,7 @@ blanks = []
 for i in range(I):
     for j in range(J):
         if origin_mat[i][j]: continue
-        blanks.append((i, j))
+        if check_around(i, j): blanks.append((i, j))
 
 maxx = 0
 for tu1, tu2 in combinations(blanks, 2):
