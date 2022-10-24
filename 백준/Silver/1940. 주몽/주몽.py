@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N, M = int(input()), int(input())
 S = set(map(int, input().split()))
 cnt = 0
