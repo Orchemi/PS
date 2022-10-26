@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 I, J = map(int, input().split())
 mat = [list(map(int, input().split())) for _ in range(I)]
 mat_h = [[0]*(J+1) for _ in range(I+1)]
