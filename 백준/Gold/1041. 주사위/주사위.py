@@ -26,8 +26,8 @@ def main():
         min_triple = calc_min_triple()
 
         sq_triple = 4
-        sq_double = 4*(N-2)+4*(N-1) if N > 1 else 4
-        sq_single = 4*(N-1)*(N-2)+(N-2)**2 if N > 1 else 0
+        sq_double = 4*(N-2)+4*(N-1)
+        sq_single = 4*(N-1)*(N-2)+(N-2)**2
 
         single = min_single * sq_single
         double = min_double * sq_double
