@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 U, N = map(int, input().split())
 D = {}
 for _ in range(N):
