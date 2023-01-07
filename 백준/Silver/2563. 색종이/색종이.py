@@ -6,9 +6,4 @@ for _ in range(N):
         for yy in range(y, y+10):
             mat[xx][yy] = 1
 
-cnt = 0
-for i in range(101):
-    for j in range(101):
-        if mat[i][j]: cnt += 1
-
-print(cnt)
+print(sum([sum(lst) for lst in mat]))
