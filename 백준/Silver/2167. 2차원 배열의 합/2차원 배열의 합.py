@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def main():
     def make_memo():
         memo = [[0]*J for _ in range(I)]
