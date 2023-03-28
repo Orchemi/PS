@@ -8,8 +8,9 @@ def find_gcd(l, r):
         for i in range(1, int(n**(1/2))+1):
             if n%i: continue
             lower_cds.append(i)
-            if i**2==n: continue
             upper_cds.append(n//i)
+        if lower_cds[-1] == upper_cds[0]:
+            lower_cds.pop()
         return lower_cds + upper_cds[::-1]
 
     init_cds = find_cds(a+l*d)
