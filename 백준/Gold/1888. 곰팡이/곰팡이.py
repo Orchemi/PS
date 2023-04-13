@@ -23,31 +23,6 @@ def main():
             all_values_set |= s
         return all_values_set
 
-    def find_groups():
-        groups = dict()
-        group_num = 1
-        visit = [[0]*J for _ in range(I)]
-        for i in range(I):
-            for j in range(J):
-                if not mat[i][j]: continue
-                if visit[i][j]: continue
-                # 그룹화 시작
-                groups[group_num] = set()
-                Q = {(i, j)}
-                while Q:
-                    ni, nj = Q.pop()
-                    if visit[ni][nj]: continue
-                    visit[ni][nj] = 1
-                    groups[group_num].add((ni, nj))
-                    for di, dj in ((-1,0),(1,0),(0,-1),(0,1)):
-                        si, sj = ni+di, nj+dj
-                        if not (0<=si<I and 0<=sj<J): continue
-                        if not mat[si][sj]: continue
-                        if visit[si][sj]: continue
-                        Q.add((si, sj))
-                group_num += 1
-        return groups
-
     def check_is_one():
         # 값이 있는 한 점 찾기
         all_values_set = get_all_values_set()
