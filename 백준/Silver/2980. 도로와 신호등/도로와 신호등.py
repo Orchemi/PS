@@ -3,9 +3,7 @@ traffics = {}
 for _ in range(N):
     D, R, G = map(int, input().split())
     traffics[D] = (R, G)
-
-P = sorted(traffics.keys())
-S = set(P)
+S = set(traffics.keys())
 
 time = 0
 cur_pos = 0
@@ -16,17 +14,9 @@ while cur_pos < L:
         continue
 
     R, G = traffics[cur_pos]
-    M = R+G
-    rest = time%M
-    if not rest:
-        time += R+1
-        cur_pos += 1
-    else:
-        if rest < R:
-            time += R-rest+1
-            cur_pos += 1
-        else:
-            time += 1
-            cur_pos += 1
+    rest = time % (R+G)
+    acc = R-rest if rest<R else 0
+    time += acc+1
+    cur_pos += 1
 
 print(time)
