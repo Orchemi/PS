@@ -1,14 +1,12 @@
-import sys
-input = sys.stdin.readline
-from collections import deque
-
 N = int(input())
 arr = list(map(int, input().split()))
-acc = deque([arr[-1]])
-for i in range(N-2, 0, -1):
-    acc.appendleft(acc[0]+arr[i])
 
 ret = 0
-for i in range(N-1):
-    ret += acc[i]*arr[i]
+acc = arr[-1]
+i = N-2
+while i >= 0:
+    ret += acc*arr[i]
+    acc += arr[i]
+    i -= 1
+
 print(ret)
