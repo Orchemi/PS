@@ -1,0 +1,10 @@
+a, b, c = map(int, input().split())
+m = min(a, b, c)
+As = sorted(list(map(int, input().split())), reverse=True)
+Bs = sorted(list(map(int, input().split())), reverse=True)
+Cs = sorted(list(map(int, input().split())), reverse=True)
+
+ret1 = sum(As) + sum(Bs) + sum(Cs)
+print(ret1)
+ret2 = (sum(As[:m]) + sum(Bs[:m]) + sum(Cs[:m]))*0.9 + (sum(As[m:]) + sum(Bs[m:]) + sum(Cs[m:]))
+print(int(ret2))
