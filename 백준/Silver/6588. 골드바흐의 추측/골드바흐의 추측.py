@@ -1,37 +1,29 @@
 import sys
 input = sys.stdin.readline
 
-def check(N):
-    def is_prime(n):
-        for i in range(2, int(n ** (1 / 2)) + 1):
-            if not n % i: return 0
-        return 1
+def find_primes():
+    check_list = [1]*K
+    primes = []
 
-    def next_s(s):
-        s += 1
-        while not is_prime(s):
-            s += 1
-        return s
+    for m in range(4, K, 2):
+        check_list[m] = 0
 
-    def next_e(e):
-        e -= 1
-        while not is_prime(e):
-            e -= 1
-        return e
+    for n in range(3, K):
+        if not check_list[n]: continue
+        primes.append(n)
+        for m in range(n*2, K, n):
+            check_list[m] = 0
+    return primes, check_list
 
-    s = 3
-    e = N-3 if is_prime(N-3) else next_e(N-3)
-    while s <= e:
-        ssum = s + e
-        if ssum == N: return s, e
-        elif ssum > N: e = next_e(e)
-        elif ssum < N: s = next_s(s)
-    return 0, 0
+def main():
+    for p in primes:
+        if p*2 > N: break
+        if check_list[N-p]: return f'{N} = {p} + {N-p}'
+    return "Goldbach's conjecture is wrong."
 
-
+K = 1000001
+primes, check_list = find_primes()
 while True:
     N = int(input())
     if not N: break
-    s, e = check(N)
-    ret = "Goldbach's conjecture is wrong." if not (s or e) else f'{N} = {s} + {e}'
-    print(ret)
+    print(main())
