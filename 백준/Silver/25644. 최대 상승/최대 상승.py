@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def main():
     N = int(input())
     arr = list(map(int, input().split()))
