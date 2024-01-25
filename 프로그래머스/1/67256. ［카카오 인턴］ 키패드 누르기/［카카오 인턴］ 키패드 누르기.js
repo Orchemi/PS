@@ -1,52 +1,27 @@
-const findPosition = (n) => n ? [Math.floor((n-1)/3), (n-1)%3] : [3, 1];
-const calcDistance = (positions1, positions2) => {
-    const _y = positions1[0] - positions2[0];
-    const _x = positions1[1] - positions2[1];
-    const dy = _y > 0 ? _y : -_y;
-    const dx = _x > 0 ? _x : -_x;
-    return dx + dy;
-}
+const findPosition = (n) => n ? [Math.trunc((n-1)/3), (n-1)%3] : [3, 1];
+const calcDistance = (p1, p2) => Math.abs(p1[0]-p2[0]) + Math.abs(p1[1]-p2[1]);
 
 function solution(numbers, hand) {
     let L = 'L', R = 'R', M = 'M';
     const choices = [M, L, M, R, L, M, R, L, M, R];
+    const positions = { 'L': [3, 0], 'R': [3, 2] };
     
-    let ret = '';
-    let leftPositions = [3, 0];
-    let rightPositions = [3, 2];
-    
-    const moveRight = (currentPositions) => {
-        ret += R;
-        rightPositions = currentPositions;
-    }
-    
-    const moveLeft = (currentPositions) => {
-        ret += L;
-        leftPositions = currentPositions;
-    }
-    
-    numbers.forEach((n) => {
-        const currentPositions = findPosition(n);
+    const moveList = numbers.map((n) => {
+        const curPos = findPosition(n);
+        const move = (P) => {
+            positions[P] = curPos;
+            return P;
+        }
         switch (choices[n]) {
-            case L: 
-                moveLeft(currentPositions);
-                break;
-            case R: 
-                moveRight(currentPositions);
-                break;
+            case L: return move(L);
+            case R: return move(R);
             case M:
-                const leftDistance = calcDistance(currentPositions, leftPositions);
-                const rightDistance = calcDistance(currentPositions, rightPositions);
-                console.log(n, leftDistance, rightDistance);
-                if (leftDistance > rightDistance) {
-                    moveRight(currentPositions);
-                } else if (leftDistance < rightDistance) {
-                    moveLeft(currentPositions);
-                } else {
-                    hand === 'right' ? moveRight(currentPositions) : moveLeft(currentPositions);
-                }
-                break;
+                const leftDistance = calcDistance(curPos, positions[L]);
+                const rightDistance = calcDistance(curPos, positions[R]);
+                if (leftDistance > rightDistance) return move(R);
+                if (leftDistance < rightDistance) return move(L);
+                return hand === 'right' ? move(R) : move(L);
         }
     })
-    return ret;
+    return moveList.join('');
 }
