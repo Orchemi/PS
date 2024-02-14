@@ -1,0 +1,1 @@
+const solution = (strlist) => strlist.map((word) => word.length);
