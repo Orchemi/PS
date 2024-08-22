@@ -1,19 +1,12 @@
 function solution(input) {
   const [_, ...arrs] = input;
-  const orders = {};
 
-  const data = arrs.map((arr, i) => {
-    orders[arr] = i;
-    const _arr = arr.split(" ");
-    _arr[0] = +_arr[0];
-    return _arr;
+  const data = arrs.map((arr) => {
+    const [age, name] = arr.split(" ");
+    return [+age, name];
   });
 
-  const result = data.sort((a, b) => {
-    const [age1, name1] = a;
-    const [age2, name2] = b;
-    return age1 === age2 ? orders[name1] - orders[name2] : age1 - age2;
-  });
+  const result = data.sort((a, b) => a[0] - b[0]);
 
   return result.map((arr) => arr.join(" "));
 }
